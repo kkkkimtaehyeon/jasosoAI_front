@@ -1,0 +1,62 @@
+import React, {createContext, useContext, useState} from 'react';
+import {useNavigate} from "react-router-dom";
+import api from "../common/api-axios.js";
+
+const AuthContext = createContext(null);
+
+export const AuthProvider = ({children}) => {
+    const [user, setUser] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
+    // 로그인 함수
+    const login = async (email, password) => {
+        try {
+            const response = await api.post("/api/users/login", {
+                email,
+                password
+            });
+            const loggedUser = response.data;
+            setUser(loggedUser);
+            setIsLoggedIn(true);
+            return true;
+        } catch (error) {
+            console.error('Login failed:', error);
+            return false; // Return false on failure.
+        }
+    };
+
+    // 로그아웃 함수
+    const logout = () => {
+        api.post('/api/users/logout')
+            .then(response => {
+                console.log("Logout successful:", response.data);
+                navigate("/");
+            })
+            .catch(error => {
+                console.error("Logout failed:", error);
+                // 에러 메시지 처리 등
+            })
+            .finally(() => {
+                setUser(null);
+                setIsLoggedIn(false);
+            })
+
+    };
+
+    const authContextValue = {
+        user,
+        isLoggedIn,
+        login,
+        logout,
+    };
+
+    return (
+        <AuthContext.Provider value={authContextValue}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+
+// 다른 컴포넌트에서 쉽게 사용할 수 있도록 커스텀 훅 생성
+export const useAuth = () => useContext(AuthContext);
