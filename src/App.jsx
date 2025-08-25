@@ -12,12 +12,14 @@ import {AuthProvider} from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import UserCoverLetterDetail from "./components/UserCoverLetterDetail.jsx";
 import FeedbackPage from "./pages/FeedbackPage.jsx";
+import {GoogleOAuthProvider} from "@react-oauth/google";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
         // 앱 시작 시 localStorage 값 확인
         return localStorage.getItem("isLoggedIn") === "true";
     });
+    const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
     useEffect(() => {
         // isLoggedIn이 바뀔 때 localStorage에 저장
@@ -26,22 +28,26 @@ function App() {
 
     return (
         <BrowserRouter>
-            <AuthProvider>
-                <Routes>
-                    <Route path="/" element={<Layout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
-                        <Route index element={<Index/>}/>
-                        <Route path={"login"} element={<Login setIsLoggedIn={setIsLoggedIn}/>}/>
-                        <Route element={<ProtectedRoute isLoggedIn={isLoggedIn}/>}>
-                            <Route path={"ai/cover-letters/generate"} element={<GenerateAiCoverLetter/>}/>
-                            <Route path={"ai/cover-letters/:id"} element={<AiCoverLetterDetail/>}/>
-                            <Route path={"cover-letters"} element={<CoverLetterList/>}/>
-                            <Route path={"user/cover-letters/upload"} element={<UserCoverLetterUpload/>}/>
-                            <Route path={"user/cover-letters/:id"} element={<UserCoverLetterDetail/>}/>
-                            <Route path={"feedback"} element={<FeedbackPage/>}/>
+            <GoogleOAuthProvider clientId={googleClientId}>
+                <AuthProvider setIsLoggedIn={setIsLoggedIn}>
+                    <Routes>
+                        <Route path="/" element={<Layout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}>
+                            <Route index element={<Index/>}/>
+                            <Route path={"login"} element={<Login setIsLoggedIn={setIsLoggedIn}/>}/>
+                            <Route element={<ProtectedRoute isLoggedIn={isLoggedIn}/>}>
+                                <Route path={"ai/cover-letters/generate"} element={<GenerateAiCoverLetter/>}/>
+                                <Route path={"ai/cover-letters/:id"} element={<AiCoverLetterDetail/>}/>
+                                <Route path={"cover-letters"} element={<CoverLetterList/>}/>
+                                <Route path={"user/cover-letters/upload"} element={<UserCoverLetterUpload/>}/>
+                                <Route path={"user/cover-letters/:id"} element={<UserCoverLetterDetail/>}/>
+                                <Route path={"feedback"} element={<FeedbackPage/>}/>
+                            </Route>
                         </Route>
-                    </Route>
-                </Routes>
-            </AuthProvider>
+                    </Routes>
+                </AuthProvider>
+            </GoogleOAuthProvider>
+
+
         </BrowserRouter>
     );
 }

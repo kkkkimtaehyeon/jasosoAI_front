@@ -1,7 +1,8 @@
 import React from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import {useAuth} from "../contexts/AuthContext.jsx";
-import {Dropdown} from "react-bootstrap";
+import {Button, Dropdown} from "react-bootstrap";
+import GoogleSignInButton from "../components/GoogleLoginButton.jsx";
 
 // --- STYLES (can be shared across components) ---
 const styles = {
@@ -58,7 +59,7 @@ const NotificationIcon = () => (
 // --- REUSABLE NAVIGATION BAR COMPONENT ---
 const NavigationBar = ({ isLoggedIn, setIsLoggedIn }) => {
     const navigate = useNavigate();
-    const {logout} = useAuth();
+    const {logout, googleLogin} = useAuth();
 
     const handleLogout = () => {
         logout();
@@ -107,7 +108,12 @@ const NavigationBar = ({ isLoggedIn, setIsLoggedIn }) => {
                         </>
                     ) : (
                         <div className="d-flex align-items-center gap-4">
-                            <button className="btn" style={styles.buttonPrimary} onClick={() => navigate('/login')}>로그인</button>
+                            {/*<button className="btn" style={styles.buttonPrimary}*/}
+                            {/*        onClick={() => navigate('/login')}>로그인*/}
+                            {/*</button>*/}
+                            <div>
+                                <GoogleSignInButton />
+                            </div>
                         </div>
                     )}
                 </div>
@@ -115,9 +121,6 @@ const NavigationBar = ({ isLoggedIn, setIsLoggedIn }) => {
         </header>
     );
 };
-
-
-
 
 
 export default NavigationBar;
