@@ -201,8 +201,8 @@ const GenerateAiCoverLetter = () => {
                 items: items
             });
 
-            const newCoverLetterId = response.data.id;
-            navigate(`/cover-letters/${newCoverLetterId}`);
+            const newCoverLetterId = response.data;
+            navigate(`/ai/cover-letters/${newCoverLetterId}`);
 
         } catch (error) {
             setError("AI 자소서 생성 중 오류가 발생했습니다.");
