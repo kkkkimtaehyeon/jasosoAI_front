@@ -31,7 +31,7 @@ const FeedbackPage = () => {
         e.preventDefault();
         setError("");
         setLoading(true);
-        api.post('/api/users/feedback', {'content': content})
+        api.post('/api/feedback', {'content': content})
             .then(res => {
                 if (res.status === 201) {
                     alert('피드백이 정상적으로 제출되었습니다.');
