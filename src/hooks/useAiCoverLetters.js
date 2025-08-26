@@ -1,9 +1,11 @@
 import {useState} from "react";
 import api from "/src/common/api-axios.js";
+import {useNavigate} from "react-router-dom";
 
 const useAiCoverLetter = () => {
     const [aiCoverLetters, setAiCoverLetters] = useState([]);
     const [aiCoverLetterDetail, setAiCoverLetterDetail] = useState(null);
+    const navigate = useNavigate();
 
     const requestAiCoverLetter = (requestData) => {
         // api.post() 호출을 반환하여 async/await를 사용할 수 있게 함
@@ -49,9 +51,11 @@ const useAiCoverLetter = () => {
     };
 
     const convertAiToUserCoverLetter = (id) => {
-        api.patch(`/api/cover-letters/${id}/convert-to-user`)
+        api.patch(`/api/cover-letters/${id}/type`)
             .then(response => {
-                // navigate('/dashboard')
+                if (response) {
+                    navigate('/cover-letters');
+                }
                 // setAiCoverLetterDetail(response.data);
                 // return response.data;  // 반환값이 필요할 경우
             })
