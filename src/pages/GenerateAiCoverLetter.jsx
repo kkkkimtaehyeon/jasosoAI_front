@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import useAiCoverLetters from "../hooks/useAiCoverLetters.js";
 import AiCoverLetterItems from "../components/AiCoverLetterItems.jsx";
-import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid'; // uuid 라이브러리 임포트
+import {useNavigate} from "react-router-dom";
+import {v4 as uuidv4} from 'uuid'; // uuid 라이브러리 임포트
 
 const styles = {
     body: {
@@ -44,8 +44,8 @@ const styles = {
 };
 
 const GenerateAiCoverLetter = () => {
-    const [items, setItems] = useState([{ id: uuidv4(), question: '', char_limit: 0 }]);
-    const { requestAiCoverLetter } = useAiCoverLetters();
+    const [items, setItems] = useState([{id: uuidv4(), question: '', char_limit: 0}]);
+    const {requestAiCoverLetter} = useAiCoverLetters();
     const [url, setUrl] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -88,7 +88,7 @@ const GenerateAiCoverLetter = () => {
     };
 
     const handleAddItem = () => {
-        const newItem = { id: uuidv4(), question: '', char_limit: 0 };
+        const newItem = {id: uuidv4(), question: '', char_limit: 0};
         setItems([...items, newItem]);
     };
 
@@ -99,7 +99,7 @@ const GenerateAiCoverLetter = () => {
     };
 
     const handleItemChange = (id, field, value) => {
-        setItems(items.map(q => q.id === id ? { ...q, [field]: value } : q));
+        setItems(items.map(q => q.id === id ? {...q, [field]: value} : q));
     };
 
     // --- 여기부터 변경된 부분 ---
@@ -117,25 +117,34 @@ const GenerateAiCoverLetter = () => {
         <div style={styles.body}>
             {loading && (
                 <div style={styles.loadingOverlay}>
-                    <div className="spinner-border text-primary" style={styles.spinner} role="status">
-                        <span className="visually-hidden">Loading...</span>
+                    <div>
+                        <div>
+                            <div className="spinner-border text-primary" style={styles.spinner} role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h1>AI가 자소서를 쓰고있습니다.</h1>
+                        </div>
                     </div>
                 </div>
             )}
             <div className="d-flex flex-column min-vh-100">
                 <main className="flex-grow-1 container py-5">
-                    <div style={{ maxWidth: '768px' }} className="mx-auto">
+                    <div style={{maxWidth: '768px'}} className="mx-auto">
                         <div className="mb-5">
                             <h2 className="h1 fw-bold mb-2">AI 자소서 생성 요청</h2>
-                            <p style={{ color: styles.textSecondary }}>채용 공고와 이력서를 바탕으로 매력적인 자소서를 만들어 보세요.</p>
+                            <p style={{color: styles.textSecondary}}>채용 공고와 이력서를 바탕으로 매력적인 자소서를 만들어 보세요.</p>
                         </div>
 
                         <form className="d-flex flex-column gap-4" onSubmit={handleSubmit}>
                             {/* Job Posting URL Section */}
                             <div className="card shadow-sm">
                                 <div className="card-body p-4">
-                                    <label htmlFor="job-posting-url" className="form-label fs-5 fw-semibold">채용 공고 URL</label>
-                                    <br />
+                                    <label htmlFor="job-posting-url" className="form-label fs-5 fw-semibold">채용 공고
+                                        URL</label>
+                                    <br/>
                                     <small>현재 원티드, 직행만 지원합니다.</small>
                                     <input
                                         type="url"
