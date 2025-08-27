@@ -80,6 +80,11 @@ const GenerateAiCoverLetter = () => {
             navigate(`/ai/cover-letters/${newCoverLetterId}`);
 
         } catch (error) {
+            if (error.status === 400) {
+                alert('먼저 자기소개서를 업로드해주세요.')
+                // setError('먼저 자기소개서를 업로드해주세요.');
+                return
+            }
             setError("AI 자소서 생성 중 오류가 발생했습니다.");
             console.error(error);
         } finally {
