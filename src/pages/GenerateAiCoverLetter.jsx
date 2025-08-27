@@ -140,7 +140,9 @@ const GenerateAiCoverLetter = () => {
                     <div style={{maxWidth: '768px'}} className="mx-auto">
                         <div className="mb-5">
                             <h2 className="h1 fw-bold mb-2">AI 자소서 생성 요청</h2>
-                            <p style={{color: styles.textSecondary}}>채용 공고와 이력서를 바탕으로 매력적인 자소서를 만들어 보세요.</p>
+                            <p style={{color: styles.textSecondary}}>
+                                업로드된 자소서에 질문과 일치하는 경험이 없을 때는 부정확한 내용을 생성할 수 있습니다.
+                            </p>
                         </div>
 
                         <form className="d-flex flex-column gap-4" onSubmit={handleSubmit}>
