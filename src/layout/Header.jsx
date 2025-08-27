@@ -93,7 +93,7 @@ const NavigationBar = ({ isLoggedIn, setIsLoggedIn }) => {
                                 ))}
                             </nav>
                             <div className="d-flex align-items-center gap-3">
-                                <button className="btn btn-light rounded-circle p-2 lh-1"><NotificationIcon/></button>
+                                {/*<button className="btn btn-light rounded-circle p-2 lh-1"><NotificationIcon/></button>*/}
                                 <Dropdown>
                                     <Dropdown.Toggle variant="light" id="dropdown-basic">
                                         <img alt="User profile" className="rounded-circle" height="40" width="40" src="https://placehold.co/40x40/0d7ff2/FFFFFF?text=U" />
