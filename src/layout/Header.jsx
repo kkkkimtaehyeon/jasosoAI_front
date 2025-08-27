@@ -100,6 +100,9 @@ const NavigationBar = ({ isLoggedIn, setIsLoggedIn }) => {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu align="end">
+                                        <Dropdown.Item onClick={() => navigate('/cover-letters')}>자소서 관리</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => navigate('/user/cover-letters/upload')}>자소서 업로드</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => navigate('/ai/cover-letters/generate')}>AI 자소서 생성</Dropdown.Item>
                                         <Dropdown.Item onClick={handleLogout}>로그아웃</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
