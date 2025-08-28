@@ -11,10 +11,16 @@ const api = axios.create({
 api.interceptors.response.use(
     (response) => response, // 성공 응답은 그대로 반환
     (error) => {
-        if (error.response && error.response.status === 401) {
-            // 401 Unauthorized → 로그인 페이지로 이동
-            window.location.href = '/login';
+        if (error.response) {
+            if (error.response.status === 401) {
+                // 401 Unauthorized → 로그인 페이지로 이동
+                window.location.href = '/login';
+            }
+            if (error.response.status === 403) {
+                alert(error.response.data.detail);
+            }
         }
+
         return Promise.reject(error);
     }
 );
