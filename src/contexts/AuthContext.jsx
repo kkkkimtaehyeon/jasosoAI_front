@@ -22,7 +22,7 @@ export const AuthProvider = ({children, setIsLoggedIn}) => {
             setIsLoggedIn(true);
             return true;
         } catch (error) {
-            console.error('Login failed:', error);
+            // console.error('Login failed:', error);
             return false; // Return false on failure.
         }
     };
@@ -32,7 +32,6 @@ export const AuthProvider = ({children, setIsLoggedIn}) => {
             // 토큰을 FastAPI 백엔드로 전송
             const res = await api.post('/auth/google/login', {token: tokenResponse.access_token});
             const loggedUser = await res.data;
-            console.log(`user: ${loggedUser}`)
             setUser(loggedUser);
             setIsLoggedIn(true);
             // 로그인 성공 후 유저 정보 저장 등 후속 처리
@@ -47,7 +46,6 @@ export const AuthProvider = ({children, setIsLoggedIn}) => {
     const logout = () => {
         api.post('/api/users/logout')
             .then(response => {
-                console.log("Logout successful:", response.data);
                 navigate("/");
             })
             .catch(error => {
