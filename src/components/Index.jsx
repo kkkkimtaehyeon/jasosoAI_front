@@ -84,8 +84,8 @@ const Index = () => {
                         <div className="text-center mx-auto mb-5" style={{maxWidth: '56rem'}}>
                             <h2 className="display-5 fw-bold mb-4">AI 기반 맞춤형 자소서 작성</h2>
                             <p className="fs-5" style={{color: styles.textSecondary}}>
-                                채용공고 분석부터 회사 인재상 파악, 그리고 당신의 경험을 최적으로 재구성하는 것까지.
-                                자소서 작성의 모든 과정을 AI가 책임집니다.
+                                <strong>채용공고 분석</strong>부터 회사 인재상 파악, 그리고 당신의 <strong>경험을 최적으로 재구성</strong>하는 것까지. <br />
+                                자소서 작성의 모든 과정을 자소서 AI가 책임집니다.
                             </p>
                         </div>
                         <div className="row g-4">

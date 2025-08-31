@@ -139,9 +139,9 @@ const GenerateAiCoverLetter = () => {
                 <main className="flex-grow-1 container py-5">
                     <div style={{maxWidth: '768px'}} className="mx-auto">
                         <div className="mb-5">
-                            <h2 className="h1 fw-bold mb-2">AI 자소서 생성 요청</h2>
+                            <h2 className="h1 fw-bold mb-2">AI 자소서 생성</h2>
                             <p style={{color: styles.textSecondary}}>
-                                업로드된 자소서에 질문과 일치하는 경험이 없을 때는 부정확한 내용을 생성할 수 있습니다.
+                                <strong>모든 자소서의 내용은 암호화되어 안전하게 저장됩니다. </strong>
                             </p>
                         </div>
 
@@ -184,7 +184,7 @@ const GenerateAiCoverLetter = () => {
                                     disabled={loading || !isFormValid}
                                     // --- 여기까지 변경된 부분 ---
                                 >
-                                    {loading ? "생성 중..." : "생성 요청하기"}
+                                    {loading ? "생성 중..." : "생성하기"}
                                 </button>
                             </div>
 

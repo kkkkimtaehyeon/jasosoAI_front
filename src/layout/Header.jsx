@@ -68,9 +68,9 @@ const NavigationBar = ({ isLoggedIn, setIsLoggedIn }) => {
     };
 
     const navLinks = [
-        { label: '자소서 목록', to: '/cover-letters' },
-        { label: '자소서 업로드', to: '/user/cover-letters/upload' },
-        { label: 'AI 자소서 생성', to: '/ai/cover-letters/generate' },
+        { label: '내 자소서 관리', to: '/cover-letters' },
+        { label: '자소서 업로드', to: '/cover-letters/upload' },
+        { label: 'AI 자소서 생성', to: '/cover-letters/generate' },
         { label: '피드백', to: '/feedback' },
     ];
 
@@ -87,7 +87,7 @@ const NavigationBar = ({ isLoggedIn, setIsLoggedIn }) => {
                         <>
                             <nav className="d-none d-md-flex align-items-center gap-4">
                                 {navLinks.map(({label, to}) => (
-                                    <NavLink key={to} to={to} style={({isActive}) => isActive ? styles.linkActive : styles.link}>
+                                    <NavLink key={to} to={to} end style={({isActive}) => isActive ? styles.linkActive : styles.link}>
                                         {label}
                                     </NavLink>
                                 ))}
@@ -100,9 +100,9 @@ const NavigationBar = ({ isLoggedIn, setIsLoggedIn }) => {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu align="end">
-                                        <Dropdown.Item onClick={() => navigate('/cover-letters')}>자소서 관리</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => navigate('/user/cover-letters/upload')}>자소서 업로드</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => navigate('/ai/cover-letters/generate')}>AI 자소서 생성</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => navigate('/cover-letters')}>내 자소서 관리</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => navigate('/cover-letters/upload')}>자소서 업로드</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => navigate('/cover-letters/generate')}>AI 자소서 생성</Dropdown.Item>
                                         <Dropdown.Item onClick={handleLogout}>로그아웃</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>

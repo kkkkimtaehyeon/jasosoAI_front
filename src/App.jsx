@@ -35,10 +35,10 @@ function App() {
                             <Route index element={<Index/>}/>
                             <Route path={"login"} element={<Login setIsLoggedIn={setIsLoggedIn}/>}/>
                             <Route element={<ProtectedRoute isLoggedIn={isLoggedIn}/>}>
-                                <Route path={"ai/cover-letters/generate"} element={<GenerateAiCoverLetter/>}/>
+                                <Route path={"cover-letters/generate"} element={<GenerateAiCoverLetter/>}/>
                                 <Route path={"ai/cover-letters/:id"} element={<AiCoverLetterDetail/>}/>
                                 <Route path={"cover-letters"} element={<CoverLetterList/>}/>
-                                <Route path={"user/cover-letters/upload"} element={<UserCoverLetterUpload/>}/>
+                                <Route path={"cover-letters/upload"} element={<UserCoverLetterUpload/>}/>
                                 <Route path={"user/cover-letters/:id"} element={<UserCoverLetterDetail/>}/>
                                 <Route path={"feedback"} element={<FeedbackPage/>}/>
                             </Route>

@@ -199,6 +199,8 @@ const App = () => {
         <main className="flex-grow-1 container py-5">
             <div style={{maxWidth: '896px'}} className="mx-auto">
                 {/* --- TABS --- */}
+
+
                 <ul className="nav nav-pills mb-4">
                     <li className="nav-item">
                         <button
@@ -217,6 +219,12 @@ const App = () => {
                     {/* </button>*/}
                     {/*</li>*/}
                 </ul>
+
+
+                <p>
+                    <strong>모든 자소서의 내용은 암호화되어 안전하게 저장됩니다. </strong>
+                </p>
+
 
                 {/* --- CONDITIONAL UI --- */}
                 {uploadMethod === 'file' && (
