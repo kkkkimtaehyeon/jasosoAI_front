@@ -33,7 +33,7 @@ const FeedbackPage = () => {
         setLoading(true);
         api.post('/api/feedbacks', {'content': content})
             .then(res => {
-                if (res.status === 201) {
+                if (res.status === 200) {
                     alert('피드백이 정상적으로 제출되었습니다.');
                     navigate('/cover-letters');
                 }
