@@ -35,7 +35,8 @@ const FeedbackPage = () => {
             .then(res => {
                 if (res.status === 200) {
                     alert('피드백이 정상적으로 제출되었습니다.');
-                    navigate('/cover-letters');
+                    setLoading(false);
+                    // navigate('/cover-letters');
                 }
             })
             .catch(err => {
