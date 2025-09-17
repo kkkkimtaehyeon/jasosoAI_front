@@ -13,7 +13,7 @@ const useAiCoverLetter = () => {
     };
 
     const getAiCoverLetterList = () => {
-        api.get("/api/cover-letters?type=AI")
+        api.get("/api/cover-letters?cv_type=AI")
             .then(response => {
                 setAiCoverLetters(response.data);
                 return response.data;

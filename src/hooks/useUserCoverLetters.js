@@ -33,7 +33,7 @@ const useUserCoverLetter = () => {
     }
 
     const getUserCoverLetterList = () => {
-        api.get('/api/cover-letters?type=USER')
+        api.get('/api/cover-letters?cv_type=USER')
             .then(response => {
                 setUserCoverLetters(response.data);
                 return response.data
